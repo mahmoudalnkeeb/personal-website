@@ -1,4 +1,4 @@
-# The-Repository
+# My Personal Website/Portfolio
 
 Simple portfolio contains information about me and my socials, experience and projects using github api
 
