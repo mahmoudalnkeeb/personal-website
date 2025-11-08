@@ -3,31 +3,1117 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mahmoud Alnakeeb - Backend Developer</title>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-            media="print" onload="this.media='all'"
+
+        <!-- SEO Meta Tags -->
+        <title>
+            Mahmoud Ramadan Alnakeeb - Backend Developer | Node.js Specialist
+        </title>
+        <meta
+            name="description"
+            content="Node.js Backend Developer with 2 years of experience in RESTful APIs, microservices, and cloud deployment. Specialized in Express.js, NestJS, PostgreSQL, and MongoDB."
         />
-        <link rel="stylesheet" href="./css/style.css" />
-    </head>
-    <body>
-        <div id="app"></div>
-        <script>
-            if ("serviceWorker" in navigator) {
-                window.addEventListener("load", () => {
-                    const register = () => navigator.serviceWorker.register("/sw.js").catch(() => {});
-                    if ("requestIdleCallback" in window) {
-                        requestIdleCallback(register, { timeout: 2000 });
-                    } else {
-                        setTimeout(register, 0);
-                    }
-                });
+        <meta
+            name="keywords"
+            content="Node.js Developer, Backend Developer, JavaScript, TypeScript, Express.js, NestJS, MongoDB, PostgreSQL, API Development"
+        />
+        <meta name="author" content="Mahmoud Ramadan Alnakeeb" />
+        <meta name="robots" content="index, follow" />
+
+        <!-- Open Graph / Social Media -->
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="Mahmoud Ramadan Alnakeeb - Backend Developer"
+        />
+        <meta
+            property="og:description"
+            content="Node.js Backend Developer specializing in scalable APIs and microservices"
+        />
+        <meta property="og:url" content="https://alnakeeb.netlify.app" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary" />
+        <meta
+            name="twitter:title"
+            content="Mahmoud Ramadan Alnakeeb - Backend Developer"
+        />
+        <meta
+            name="twitter:description"
+            content="Node.js Backend Developer specializing in scalable APIs and microservices"
+        />
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://alnakeeb.netlify.app" />
+
+        <!-- Structured Data (JSON-LD) -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Mahmoud Ramadan Alnakeeb",
+                "jobTitle": "Backend Developer",
+                "description": "Node.js Developer with 2 years of professional experience",
+                "url": "https://alnakeeb.netlify.app",
+                "email": "mahmoudalnakeeb@outlook.com",
+                "telephone": "+201140485617",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Damanhur",
+                    "addressCountry": "Egypt"
+                },
+                "sameAs": [
+                    "https://linkedin.com/in/mahmoud-alnakeeb",
+                    "https://github.com/mahmoudalnkeeb"
+                ],
+                "alumniOf": {
+                    "@type": "EducationalOrganization",
+                    "name": "Damanhour University"
+                }
             }
         </script>
-        <script src="./js/index.js" type="module"></script>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #0c0c0c;
+                color: #fff;
+                font-family: "Consolas", "Monaco", "Courier New", monospace;
+                height: 100vh;
+                overflow: hidden;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+            /* Skip to main content for screen readers */
+            .skip-link {
+                position: absolute;
+                top: -40px;
+                left: 0;
+                background: #5f87af;
+                color: #0c0c0c;
+                padding: 8px;
+                text-decoration: none;
+                z-index: 100;
+            }
+
+            .skip-link:focus {
+                top: 0;
+            }
+
+            .terminal-header {
+                background: #1a1a1a;
+                padding: 6px 16px;
+                border-bottom: 1px solid #2a2a2a;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 13px;
+            }
+
+            .terminal-header .user {
+                color: #87d787;
+            }
+
+            .terminal-header .at {
+                color: #a8a8a8;
+            }
+
+            .terminal-header .host {
+                color: #87d787;
+            }
+
+            .terminal-header .path {
+                color: #5f87af;
+            }
+
+            .container {
+                display: flex;
+                height: calc(100vh - 29px);
+            }
+
+            .sidebar {
+                width: 320px;
+                display: flex;
+                flex-direction: column;
+                border-right: 1px solid #2a2a2a;
+            }
+
+            .file-list {
+                flex: 1;
+                background: #121212;
+                overflow-y: auto;
+                padding: 8px 0;
+            }
+
+            .file-header {
+                padding: 8px 12px;
+                background: #1a1a1a;
+                border-bottom: 1px solid #2a2a2a;
+                color: #5f87af;
+                font-size: 12px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .file-item {
+                padding: 6px 12px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: background 0.1s;
+                border-left: 3px solid transparent;
+                background: transparent;
+                border: none;
+                width: 100%;
+                text-align: left;
+                font-family: inherit;
+                font-size: inherit;
+                color: inherit;
+            }
+
+            .file-item:hover {
+                background: #1a1a1a;
+            }
+
+            .file-item:focus {
+                outline: 2px solid #5f87af;
+                outline-offset: -2px;
+                background: #1a1a1a;
+            }
+
+            .file-item.active {
+                background: #1f1f1f;
+                border-left-color: #5f87af;
+            }
+
+            .file-main {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex: 1;
+            }
+
+            .file-extension {
+                color: #72a0d3;
+                font-size: 11px;
+                width: 24px;
+            }
+
+            .file-name {
+                color: #d7d7af;
+                font-size: 13px;
+            }
+
+            .file-size {
+                color: #8a8a8a;
+                font-size: 11px;
+                margin-left: auto;
+            }
+
+            .file-details {
+                background: #0a0a0a;
+                border-top: 1px solid #2a2a2a;
+                padding: 12px;
+                font-size: 11px;
+            }
+
+            .detail-row {
+                display: flex;
+                margin-bottom: 6px;
+                line-height: 1.4;
+            }
+
+            .detail-label {
+                color: #8a8a8a;
+                width: 80px;
+                flex-shrink: 0;
+            }
+
+            .detail-value {
+                color: #b8b8b8;
+            }
+
+            .preview {
+                flex: 1;
+                padding: 24px 32px;
+                overflow-y: auto;
+                background: #0c0c0c;
+                line-height: 1.7;
+            }
+
+            .preview h1 {
+                color: #d7d7af;
+                font-size: 22px;
+                margin-bottom: 20px;
+                font-weight: 600;
+                letter-spacing: -0.5px;
+            }
+
+            .preview h2 {
+                color: #87d787;
+                font-size: 17px;
+                margin-top: 28px;
+                margin-bottom: 14px;
+                font-weight: 600;
+            }
+
+            .preview h3 {
+                color: #5f87af;
+                font-size: 15px;
+                margin-top: 18px;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+
+            .preview p {
+                color: #a8a8a8;
+                margin-bottom: 12px;
+                line-height: 1.7;
+            }
+
+            .preview ul {
+                list-style: none;
+                margin-left: 0;
+            }
+
+            .preview li {
+                margin-bottom: 8px;
+                position: relative;
+                padding-left: 18px;
+                color: #a8a8a8;
+                line-height: 1.6;
+            }
+
+            .preview li:before {
+                content: "•";
+                position: absolute;
+                left: 4px;
+                color: #5f87af;
+                font-weight: bold;
+            }
+
+            .preview a {
+                color: #5f87af;
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: border-color 0.2s;
+            }
+
+            .preview a:hover,
+            .preview a:focus {
+                border-bottom-color: #5f87af;
+                outline: none;
+            }
+
+            .preview strong {
+                color: #d7d7af;
+                font-weight: 600;
+            }
+
+            .preview em {
+                color: #8a8a8a;
+                font-style: italic;
+            }
+
+            .tag {
+                display: inline-block;
+                background: #1a1a1a;
+                color: #87d787;
+                padding: 3px 10px;
+                border-radius: 2px;
+                font-size: 11px;
+                margin: 3px 4px 3px 0;
+                border: 1px solid #2a2a2a;
+            }
+
+            .job-entry {
+                margin-bottom: 32px;
+                padding-left: 16px;
+                border-left: 2px solid #2a2a2a;
+            }
+
+            .project-card {
+                background: #121212;
+                padding: 20px;
+                margin-bottom: 20px;
+                border-left: 3px solid #5f87af;
+                border-radius: 2px;
+            }
+
+            .contact-info {
+                background: #121212;
+                padding: 16px;
+                border-radius: 2px;
+                margin-bottom: 20px;
+                border: 1px solid #2a2a2a;
+            }
+
+            .contact-info p {
+                margin-bottom: 8px;
+            }
+
+            .skills-grid {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 12px;
+                gap: 0;
+            }
+
+            ::-webkit-scrollbar {
+                width: 10px;
+                height: 10px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: #0c0c0c;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: #2a2a2a;
+                border-radius: 0;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #3a3a3a;
+            }
+
+            .section-divider {
+                height: 1px;
+                background: #2a2a2a;
+                margin: 24px 0;
+            }
+
+            /* Accessibility improvements */
+            .visually-hidden {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border-width: 0;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+
+            /* Responsive Design */
+            @media (max-width: 1024px) {
+                .sidebar {
+                    width: 280px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                body {
+                    font-size: 12px;
+                }
+
+                .terminal-header {
+                    padding: 8px 12px;
+                    font-size: 11px;
+                    flex-wrap: wrap;
+                }
+
+                .container {
+                    flex-direction: column;
+                }
+
+                .sidebar {
+                    width: 100%;
+                    height: auto;
+                    max-height: 40vh;
+                    border-right: none;
+                    border-bottom: 1px solid #2a2a2a;
+                }
+
+                .file-list {
+                    max-height: 30vh;
+                }
+
+                .file-details {
+                    display: none;
+                }
+
+                .preview {
+                    padding: 16px 20px;
+                    height: auto;
+                    flex: 1;
+                }
+
+                .preview h1 {
+                    font-size: 20px;
+                    margin-bottom: 16px;
+                }
+
+                .preview h2 {
+                    font-size: 16px;
+                    margin-top: 20px;
+                    margin-bottom: 12px;
+                }
+
+                .preview h3 {
+                    font-size: 14px;
+                    margin-top: 16px;
+                    margin-bottom: 8px;
+                }
+
+                .job-entry {
+                    padding-left: 12px;
+                    margin-bottom: 24px;
+                }
+
+                .project-card {
+                    padding: 16px;
+                    margin-bottom: 16px;
+                }
+
+                .contact-info {
+                    padding: 12px;
+                    margin-bottom: 16px;
+                }
+
+                .tag {
+                    font-size: 10px;
+                    padding: 2px 8px;
+                    margin: 2px 3px 2px 0;
+                }
+
+                .file-item {
+                    padding: 8px 12px;
+                }
+
+                .file-name {
+                    font-size: 12px;
+                }
+
+                .file-size {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 480px) {
+                body {
+                    font-size: 11px;
+                }
+
+                .terminal-header {
+                    padding: 6px 10px;
+                    font-size: 10px;
+                }
+
+                .terminal-header .path {
+                    display: none;
+                }
+
+                .preview {
+                    padding: 12px 16px;
+                }
+
+                .preview h1 {
+                    font-size: 18px;
+                    margin-bottom: 14px;
+                }
+
+                .preview h2 {
+                    font-size: 15px;
+                    margin-top: 18px;
+                    margin-bottom: 10px;
+                }
+
+                .preview h3 {
+                    font-size: 13px;
+                    margin-top: 14px;
+                    margin-bottom: 6px;
+                }
+
+                .preview p {
+                    margin-bottom: 10px;
+                    line-height: 1.6;
+                }
+
+                .preview li {
+                    margin-bottom: 6px;
+                    padding-left: 16px;
+                }
+
+                .job-entry {
+                    padding-left: 10px;
+                    margin-bottom: 20px;
+                }
+
+                .project-card {
+                    padding: 12px;
+                    margin-bottom: 12px;
+                }
+
+                .contact-info {
+                    padding: 10px;
+                    margin-bottom: 12px;
+                    font-size: 11px;
+                }
+
+                .contact-info p {
+                    margin-bottom: 6px;
+                    word-break: break-word;
+                }
+
+                .file-header {
+                    padding: 6px 10px;
+                    font-size: 11px;
+                }
+
+                .file-item {
+                    padding: 6px 10px;
+                }
+
+                .file-extension {
+                    font-size: 10px;
+                    width: 20px;
+                }
+
+                .file-name {
+                    font-size: 11px;
+                }
+
+                .section-divider {
+                    margin: 18px 0;
+                }
+
+                .skills-grid {
+                    margin-top: 8px;
+                }
+
+                .tag {
+                    font-size: 9px;
+                    padding: 2px 6px;
+                }
+            }
+
+            /* Landscape mobile optimization */
+            @media (max-width: 768px) and (orientation: landscape) {
+                .sidebar {
+                    max-height: 50vh;
+                }
+
+                .file-list {
+                    max-height: 40vh;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Skip to main content link for accessibility -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <header class="terminal-header" role="banner">
+            <span class="user">alnakeeb</span>
+            <span class="at">@</span>
+            <span class="host">alnakeeb</span>
+            <span class="path">~/personal_website</span>
+        </header>
+
+        <div class="container">
+            <nav
+                class="sidebar"
+                role="navigation"
+                aria-label="Portfolio sections"
+            >
+                <div class="file-header">
+                    <span>NAME</span>
+                    <span>SIZE</span>
+                </div>
+                <div class="file-list" role="menu">
+                    <button
+                        class="file-item active"
+                        role="menuitem"
+                        data-file="about"
+                        data-size="2.1K"
+                        data-lines="42"
+                        data-type="Markdown"
+                        data-modified="2025-11-08"
+                        tabindex="0"
+                        aria-label="About section"
+                    >
+                        <div class="file-main">
+                            <span class="file-extension" aria-hidden="true"
+                                >md</span
+                            >
+                            <span class="file-name">about.md</span>
+                        </div>
+                        <span class="file-size" aria-hidden="true">2.1K</span>
+                    </button>
+                    <button
+                        class="file-item"
+                        role="menuitem"
+                        data-file="skills"
+                        data-size="1.8K"
+                        data-lines="68"
+                        data-type="Markdown"
+                        data-modified="2025-11-08"
+                        tabindex="-1"
+                        aria-label="Skills section"
+                    >
+                        <div class="file-main">
+                            <span class="file-extension" aria-hidden="true"
+                                >md</span
+                            >
+                            <span class="file-name">skills.md</span>
+                        </div>
+                        <span class="file-size" aria-hidden="true">1.8K</span>
+                    </button>
+                    <button
+                        class="file-item"
+                        role="menuitem"
+                        data-file="experience"
+                        data-size="3.4K"
+                        data-lines="58"
+                        data-type="Markdown"
+                        data-modified="2025-11-08"
+                        tabindex="-1"
+                        aria-label="Experience section"
+                    >
+                        <div class="file-main">
+                            <span class="file-extension" aria-hidden="true"
+                                >md</span
+                            >
+                            <span class="file-name">experience.md</span>
+                        </div>
+                        <span class="file-size" aria-hidden="true">3.4K</span>
+                    </button>
+                    <button
+                        class="file-item"
+                        role="menuitem"
+                        data-file="projects"
+                        data-size="2.9K"
+                        data-lines="54"
+                        data-type="Markdown"
+                        data-modified="2025-11-08"
+                        tabindex="-1"
+                        aria-label="Projects section"
+                    >
+                        <div class="file-main">
+                            <span class="file-extension" aria-hidden="true"
+                                >md</span
+                            >
+                            <span class="file-name">projects.md</span>
+                        </div>
+                        <span class="file-size" aria-hidden="true">2.9K</span>
+                    </button>
+                </div>
+                <aside
+                    class="file-details"
+                    id="fileDetails"
+                    aria-label="File details"
+                >
+                    <div class="detail-row">
+                        <span class="detail-label">File:</span>
+                        <span class="detail-value" id="detailFile"
+                            >about.md</span
+                        >
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Type:</span>
+                        <span class="detail-value" id="detailType"
+                            >Markdown</span
+                        >
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Size:</span>
+                        <span class="detail-value" id="detailSize">2.1K</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Lines:</span>
+                        <span class="detail-value" id="detailLines">42</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Modified:</span>
+                        <span class="detail-value" id="detailModified"
+                            >2025-11-08</span
+                        >
+                    </div>
+                </aside>
+            </nav>
+
+            <main
+                class="preview"
+                id="main-content"
+                role="main"
+                aria-live="polite"
+            >
+                <!-- Content will be loaded here -->
+            </main>
+        </div>
+
+        <script>
+            // ===== CONFIGURATION OBJECT - Edit your content here =====
+            const PORTFOLIO_DATA = {
+                // Personal Information
+                personal: {
+                    name: "Mahmoud Ramadan Alnakeeb",
+                    title: "Backend Developer | Node.js Specialist",
+                    location: "Damanhur, Egypt",
+                    email: "mahmoudalnakeeb@outlook.com",
+                    phone: "+201140485617",
+                    linkedin: "https://linkedin.com/in/mahmoud-alnakeeb",
+                    github: "https://github.com/mahmoudalnkeeb",
+                },
+
+                // Professional Summary
+                summary:
+                    "Node.js Developer with 2 years of professional experience dedicated to solving business problems with clean, efficient backend solutions. I specialize in designing and implementing RESTful and real-time APIs, with practical experience in modern practices like containerization (Docker) and cloud deployment. My background includes critical work on API security, multi-tenant system architecture, and ensuring the long-term reliability of production code through testing and design principles. Eager to contribute immediately to challenging and meaningful projects.",
+
+                // Education
+                education: {
+                    degree: "Bachelor of Business Administration",
+                    institution:
+                        "Faculty of Commerce, Damanhour University, Damanhur, Egypt",
+                    graduated: "2023",
+                },
+
+                // Skills (organized by category)
+                skills: {
+                    "Programming Languages": [
+                        "JavaScript",
+                        "TypeScript",
+                        "Golang",
+                    ],
+                    "Backend Frameworks & Runtime": [
+                        "Node.js",
+                        "Express.js",
+                        "NestJS",
+                        "Bun",
+                    ],
+                    Databases: ["PostgreSQL", "MongoDB", "Redis"],
+                    "DevOps & Infrastructure": [
+                        "Linux",
+                        "Docker",
+                        "Nginx",
+                        "AWS",
+                    ],
+                    "Third-Party Services": [
+                        "Stripe",
+                        "Twilio",
+                        "Socket.IO",
+                        "RabbitMQ",
+                        "Firebase",
+                    ],
+                    "Development Tools": [
+                        "Git",
+                        "Postman",
+                        "Swagger",
+                        "ESLint",
+                        "Prettier",
+                    ],
+                    "Testing & Logging": [
+                        "Jest",
+                        "Bun Test",
+                        "Pino",
+                        "Winston",
+                        "TDD",
+                    ],
+                    "Validation & Security": [
+                        "Joi",
+                        "Zod",
+                        "JWT",
+                        "RBAC",
+                        "API Security",
+                    ],
+                    "Architecture & Design": [
+                        "Modular Design",
+                        "Microservices",
+                        "Multi-Tenant Systems",
+                    ],
+                    "Soft Skills": ["Problem-Solving", "Teamwork", "Ownership"],
+                },
+
+                // Work Experience
+                experience: [
+                    {
+                        title: "Backend Developer",
+                        company: "DevGlobal",
+                        location: "Remote",
+                        period: "January 2025 – October 2025",
+                        description:
+                            "Developed a multi-tenant SaaS backend for a team collaboration and business management platform using Node.js, Bun, and Express.js, with MongoDB. Implemented secure JWT authentication with RBAC for tenant isolation and access control.",
+                        achievements: [
+                            "Built an AI-powered chat with real-time streaming (SSE) using GPT-4 and Claude, with token usage tracking",
+                            "Developed communication features including Twilio SMS/calls (automated A2P 10DLC), messenger with Socket.io",
+                            "Integrated Stripe for subscriptions and AWS S3 for file storage",
+                            "Used Docker for deployment on EC2 and GitHub actions for CI/CD",
+                            "Implemented Pino for logging, and Swagger/OpenAPI for documentation",
+                        ],
+                        technologies:
+                            "Node.js, Bun, Express.js, MongoDB, JWT, RBAC, GPT-4, Claude, SSE, Twilio, Socket.io, Stripe, AWS S3, Docker, Pino, Swagger, OpenAPI",
+                    },
+                    {
+                        title: "Node.js Developer (Freelance)",
+                        company: "Multiple Clients",
+                        location: "Remote",
+                        period: "November 2023 - January 2025",
+                        description:
+                            "Developed RESTful APIs, microservices, and web scraping tools focused on performance and scalability.",
+                        achievements: [
+                            "Reduced memory usage by 50% on a critical Node.js image conversion process by implementing streaming and chunking to resolve crashing issues",
+                            "Delivered custom automation, integrations, and an AI-powered WordPress content system (Groq AI) to streamline business workflows",
+                            "Implemented web scraping with Puppeteer and managed task scheduling via cron and systemd",
+                        ],
+                        technologies:
+                            "Node.js, RESTful APIs, Microservices, Puppeteer, Groq AI, WordPress, Express.js, EJS, Cron, Systemd, CSV",
+                    },
+                ],
+
+                // Projects
+                projects: [
+                    {
+                        name: "Shoperz E-Commerce REST API",
+                        description:
+                            "A scalable single-vendor e-commerce API built with Node.js, Express.js, and MongoDB.",
+                        features: [
+                            "Secure JWT authentication with role-based access control",
+                            "Robust product, order, and cart management",
+                            "Supports Stripe, PayPal, and COD payments",
+                            "Image uploads, email verification, and Swagger documentation",
+                            "Production readiness through logging, security hardening, and Vercel deployment",
+                        ],
+                        techStack:
+                            "Node.js, Express.js, MongoDB, Mongoose, JWT, Stripe API, PayPal API, Swagger, Winston, Joi, Multer, Nodemailer, Firebase, Vercel",
+                    },
+                    {
+                        name: "Aiticle – AI-Powered Article Generation System",
+                        description:
+                            "An automated article generation platform powered by LLMs via the Groq API. Built with modular Node.js architecture for prompt handling and content management.",
+                        features: [
+                            "Role-based generation with structured, SEO-friendly, and metadata-rich outputs",
+                            "Schema validation and error handling",
+                            "Optimized prompt engineering for reliability",
+                        ],
+                        techStack:
+                            "Node.js, Groq SDK, Llama3-8b, JSON Schema, Prompt Engineering, File System API, Environment Variables, Error Handling",
+                    },
+                    {
+                        name: "Morg3a LMS – Learning Management System",
+                        description:
+                            "A modular, production-ready e-learning backend API built with TypeScript, Express, and PostgreSQL via Drizzle ORM.",
+                        features: [
+                            "Layered architecture with controllers, services, repositories, and DTOs for clean separation",
+                            "JWT authentication, S3/MinIO file storage, OTP via NotificationAPI",
+                            "Dockerized deployment",
+                            "Zod-based env validation, centralized error handling, structured logging",
+                            "Secure middleware defaults",
+                        ],
+                        techStack:
+                            "Node.js, TypeScript, Express, Drizzle ORM, PostgreSQL, Zod, JWT, bcrypt, AWS S3 / MinIO, NotificationAPI, Redis, Winston, Helmet, CORS, Docker, Drizzle-kit, tsx, tsc-alias",
+                    },
+                ],
+            };
+
+            // ===== TEMPLATE GENERATION FUNCTIONS =====
+            function generateAboutContent() {
+                const { personal, summary, education } = PORTFOLIO_DATA;
+                return `
+<h1>About Me</h1>
+
+<div class="contact-info">
+<p><strong>${personal.name}</strong></p>
+<p>${personal.title}</p>
+<p>Location: ${personal.location}</p>
+<p>Email: <a href="mailto:${personal.email}">${personal.email}</a></p>
+<p>Phone: ${personal.phone}</p>
+<p>LinkedIn: <a href="${personal.linkedin}" target="_blank" rel="noopener noreferrer">${personal.linkedin.replace("https://", "")}</a></p>
+<p>GitHub: <a href="${personal.github}" target="_blank" rel="noopener noreferrer">${personal.github.replace("https://", "")}</a></p>
+</div>
+
+<h2>Professional Summary</h2>
+
+<p>${summary}</p>
+
+<div class="section-divider"></div>
+
+<h2>Education</h2>
+
+<p><strong>${education.degree}</strong></p>
+<p>${education.institution}</p>
+<p><em>Graduated: ${education.graduated}</em></p>
+      `;
+            }
+
+            function generateSkillsContent() {
+                const { skills } = PORTFOLIO_DATA;
+                let html = "<h1>Technical Skills</h1>\n\n";
+
+                for (const [category, items] of Object.entries(skills)) {
+                    html += `<h2>${category}</h2>\n`;
+                    html += '<div class="skills-grid">\n';
+                    items.forEach((skill) => {
+                        html += `  <span class="tag">${skill}</span>\n`;
+                    });
+                    html += "</div>\n\n";
+                }
+
+                return html;
+            }
+
+            function generateExperienceContent() {
+                const { experience } = PORTFOLIO_DATA;
+                let html = "<h1>Work Experience</h1>\n\n";
+
+                experience.forEach((job, index) => {
+                    html += '<div class="job-entry">\n';
+                    html += `  <h2>${job.title}</h2>\n`;
+                    html += `  <h3>${job.company} • ${job.location}</h3>\n`;
+                    html += `  <p><em>${job.period}</em></p>\n\n`;
+                    html += `  <p>${job.description}</p>\n\n`;
+
+                    if (job.achievements && job.achievements.length > 0) {
+                        html += "  <p><strong>Key Achievements:</strong></p>\n";
+                        html += "  <ul>\n";
+                        job.achievements.forEach((achievement) => {
+                            html += `    <li>${achievement}</li>\n`;
+                        });
+                        html += "  </ul>\n\n";
+                    }
+
+                    html += "  <p><strong>Technologies:</strong></p>\n";
+                    html += `  <p>${job.technologies}</p>\n`;
+                    html += "</div>\n";
+
+                    if (index < experience.length - 1) {
+                        html += '\n<div class="section-divider"></div>\n\n';
+                    }
+                });
+
+                return html;
+            }
+
+            function generateProjectsContent() {
+                const { projects } = PORTFOLIO_DATA;
+                let html = "<h1>Featured Projects</h1>\n\n";
+
+                projects.forEach((project) => {
+                    html += '<div class="project-card">\n';
+                    html += `  <h2>${project.name}</h2>\n\n`;
+                    html += `  <p>${project.description}</p>\n\n`;
+
+                    if (project.features && project.features.length > 0) {
+                        html += "  <p><strong>Features:</strong></p>\n";
+                        html += "  <ul>\n";
+                        project.features.forEach((feature) => {
+                            html += `    <li>${feature}</li>\n`;
+                        });
+                        html += "  </ul>\n\n";
+                    }
+
+                    html += `  <p><strong>Tech Stack:</strong> ${project.techStack}</p>\n`;
+                    html += "</div>\n\n";
+                });
+
+                return html;
+            }
+
+            // Generate content object
+            const content = {
+                about: generateAboutContent(),
+                skills: generateSkillsContent(),
+                experience: generateExperienceContent(),
+                projects: generateProjectsContent(),
+            };
+
+            // ===== UI INTERACTION CODE =====
+            const fileItems = document.querySelectorAll(".file-item");
+            const preview = document.getElementById("main-content");
+            const detailFile = document.getElementById("detailFile");
+            const detailType = document.getElementById("detailType");
+            const detailSize = document.getElementById("detailSize");
+            const detailLines = document.getElementById("detailLines");
+            const detailModified = document.getElementById("detailModified");
+
+            function loadContent(file, element) {
+                preview.innerHTML = content[file];
+
+                // Update file details
+                detailFile.textContent = element.dataset.file + ".md";
+                detailType.textContent = element.dataset.type;
+                detailSize.textContent = element.dataset.size;
+                detailLines.textContent = element.dataset.lines;
+                detailModified.textContent = element.dataset.modified;
+
+                // Update page title for better SEO
+                const sectionTitles = {
+                    about: "About",
+                    skills: "Skills",
+                    experience: "Experience",
+                    projects: "Projects",
+                };
+                document.title = `${sectionTitles[file]} - ${PORTFOLIO_DATA.personal.name}`;
+            }
+
+            // Keyboard navigation
+            function handleKeyboardNavigation(e) {
+                const currentIndex = Array.from(fileItems).indexOf(
+                    document.activeElement,
+                );
+                let nextIndex;
+
+                if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    nextIndex = (currentIndex + 1) % fileItems.length;
+                } else if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    nextIndex =
+                        (currentIndex - 1 + fileItems.length) %
+                        fileItems.length;
+                } else if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    document.activeElement.click();
+                    return;
+                } else {
+                    return;
+                }
+
+                fileItems[nextIndex].focus();
+            }
+
+            fileItems.forEach((item, index) => {
+                // Click handler
+                item.addEventListener("click", () => {
+                    fileItems.forEach((i) => {
+                        i.classList.remove("active");
+                        i.setAttribute("tabindex", "-1");
+                    });
+                    item.classList.add("active");
+                    item.setAttribute("tabindex", "0");
+                    const file = item.getAttribute("data-file");
+                    loadContent(file, item);
+                });
+
+                // Keyboard handler
+                item.addEventListener("keydown", handleKeyboardNavigation);
+            });
+
+            // Load initial content
+            loadContent("about", fileItems[0]);
+        </script>
     </body>
 </html>
