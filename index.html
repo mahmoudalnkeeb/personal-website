@@ -19,7 +19,10 @@
         <meta name="author" content="Mahmoud Ramadan Alnakeeb" />
         <meta name="robots" content="index, follow" />
         <!--google search console-->
-        <meta name="google-site-verification" content="Y3Xovd-ERB0Z1OYb4WsXO4qveq_8A2rP2C2i72mTCQo" />
+        <meta
+            name="google-site-verification"
+            content="Y3Xovd-ERB0Z1OYb4WsXO4qveq_8A2rP2C2i72mTCQo"
+        />
 
         <!-- Open Graph / Social Media -->
         <meta property="og:type" content="website" />
@@ -46,6 +49,17 @@
 
         <!-- Canonical URL -->
         <link rel="canonical" href="https://alnakeeb.netlify.app" />
+
+        <!-- Sitemap -->
+
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230c0c0c'/%3E%3Ctext x='50' y='50' font-family='monospace' font-size='60' fill='%235f87af' text-anchor='middle' dominant-baseline='central'%3EA%3C/text%3E%3C/svg%3E"
+        />
 
         <!-- Structured Data (JSON-LD) -->
         <script type="application/ld+json">
@@ -109,28 +123,39 @@
 
             .terminal-header {
                 background: #1a1a1a;
-                padding: 6px 16px;
+                padding: 8px 16px;
                 border-bottom: 1px solid #2a2a2a;
                 display: flex;
                 align-items: center;
-                gap: 6px;
+                gap: 2px;
                 font-size: 13px;
+                font-family: "Consolas", "Monaco", "Courier New", monospace;
+                position: relative;
             }
 
             .terminal-header .user {
                 color: #87d787;
+                font-weight: 600;
             }
 
             .terminal-header .at {
-                color: #a8a8a8;
+                color: #d7d7af;
+                font-weight: 400;
             }
 
             .terminal-header .host {
-                color: #87d787;
+                color: #5f87af;
+                font-weight: 600;
+            }
+
+            .terminal-header .colon {
+                color: #d7d7af;
+                font-weight: 400;
             }
 
             .terminal-header .path {
-                color: #5f87af;
+                color: #d7af87;
+                font-weight: 400;
             }
 
             .container {
@@ -524,93 +549,6 @@
                     padding: 6px 10px;
                     font-size: 10px;
                 }
-
-                .terminal-header .path {
-                    display: none;
-                }
-
-                .preview {
-                    padding: 12px 16px;
-                }
-
-                .preview h1 {
-                    font-size: 18px;
-                    margin-bottom: 14px;
-                }
-
-                .preview h2 {
-                    font-size: 15px;
-                    margin-top: 18px;
-                    margin-bottom: 10px;
-                }
-
-                .preview h3 {
-                    font-size: 13px;
-                    margin-top: 14px;
-                    margin-bottom: 6px;
-                }
-
-                .preview p {
-                    margin-bottom: 10px;
-                    line-height: 1.6;
-                }
-
-                .preview li {
-                    margin-bottom: 6px;
-                    padding-left: 16px;
-                }
-
-                .job-entry {
-                    padding-left: 10px;
-                    margin-bottom: 20px;
-                }
-
-                .project-card {
-                    padding: 12px;
-                    margin-bottom: 12px;
-                }
-
-                .contact-info {
-                    padding: 10px;
-                    margin-bottom: 12px;
-                    font-size: 11px;
-                }
-
-                .contact-info p {
-                    margin-bottom: 6px;
-                    word-break: break-word;
-                }
-
-                .file-header {
-                    padding: 6px 10px;
-                    font-size: 11px;
-                }
-
-                .file-item {
-                    padding: 6px 10px;
-                }
-
-                .file-extension {
-                    font-size: 10px;
-                    width: 20px;
-                }
-
-                .file-name {
-                    font-size: 11px;
-                }
-
-                .section-divider {
-                    margin: 18px 0;
-                }
-
-                .skills-grid {
-                    margin-top: 8px;
-                }
-
-                .tag {
-                    font-size: 9px;
-                    padding: 2px 6px;
-                }
             }
 
             /* Landscape mobile optimization */
@@ -630,10 +568,9 @@
         <a href="#main-content" class="skip-link">Skip to main content</a>
 
         <header class="terminal-header" role="banner">
-            <span class="user">alnakeeb</span>
-            <span class="at">@</span>
-            <span class="host">alnakeeb</span>
-            <span class="path">~/personal_website</span>
+            <span class="user">alnakeeb</span><span class="at">@</span
+            ><span class="host">portfolio</span><span class="colon">:</span
+            ><span class="path" id="breadcrumb">~/portfolio</span>
         </header>
 
         <div class="container">
@@ -1061,6 +998,16 @@
                 detailLines.textContent = element.dataset.lines;
                 detailModified.textContent = element.dataset.modified;
 
+                // Update breadcrumb in terminal header
+                const breadcrumb = document.getElementById("breadcrumb");
+                const breadcrumbPaths = {
+                    about: "~/portfolio/about.md",
+                    skills: "~/portfolio/skills.md",
+                    experience: "~/portfolio/experience.md",
+                    projects: "~/portfolio/portfolio.md",
+                };
+                breadcrumb.textContent = breadcrumbPaths[file];
+
                 // Update page title for better SEO
                 const sectionTitles = {
                     about: "About",
@@ -1097,25 +1044,61 @@
                 fileItems[nextIndex].focus();
             }
 
+            // Function to navigate to a section and update URL
+            function navigateToSection(file, updateHash = true) {
+                const targetItem = Array.from(fileItems).find(
+                    (item) => item.getAttribute("data-file") === file,
+                );
+
+                if (!targetItem) return;
+
+                fileItems.forEach((i) => {
+                    i.classList.remove("active");
+                    i.setAttribute("tabindex", "-1");
+                });
+                targetItem.classList.add("active");
+                targetItem.setAttribute("tabindex", "0");
+
+                loadContent(file, targetItem);
+
+                // Update URL hash without triggering hashchange event
+                if (updateHash) {
+                    const newHash = file === "about" ? "" : `#${file}`;
+                    if (window.location.hash !== newHash) {
+                        history.pushState(
+                            null,
+                            null,
+                            newHash || window.location.pathname,
+                        );
+                    }
+                }
+            }
+
+            // Handle hash changes (back/forward navigation)
+            function handleHashChange() {
+                const hash = window.location.hash.slice(1); // Remove the '#'
+                const section = hash || "about"; // Default to about if no hash
+                navigateToSection(section, false);
+            }
+
             fileItems.forEach((item, index) => {
                 // Click handler
                 item.addEventListener("click", () => {
-                    fileItems.forEach((i) => {
-                        i.classList.remove("active");
-                        i.setAttribute("tabindex", "-1");
-                    });
-                    item.classList.add("active");
-                    item.setAttribute("tabindex", "0");
                     const file = item.getAttribute("data-file");
-                    loadContent(file, item);
+                    navigateToSection(file, true);
                 });
 
                 // Keyboard handler
                 item.addEventListener("keydown", handleKeyboardNavigation);
             });
 
-            // Load initial content
-            loadContent("about", fileItems[0]);
+            // Listen for hash changes (browser back/forward)
+            window.addEventListener("hashchange", handleHashChange);
+
+            // Load content based on initial URL hash
+            const initialHash = window.location.hash.slice(1);
+            const initialSection = initialHash || "about";
+            navigateToSection(initialSection, false);
         </script>
     </body>
 </html>
